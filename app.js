@@ -1,8 +1,7 @@
 
 //  Q1
 
-function fibonacci1 (n)
- {
+function fibonacci1(n) {
     let seqNum = [0, 1];
 
     for (let R = 2; R < n; R++) {
@@ -15,6 +14,33 @@ function fibonacci1 (n)
 console.log(fibonacci1(10));
 
 
+//Q1 another answer
+let x = 0;
+let y = 1;
+let z1;
+let arr2 = [0, 1];
+function Fibonacci(z) {
+    if (z === 377) return
+    arr2.push(z);
+
+    z1 = x + y;
+    x = y;
+    y = z1;
+    Fibonacci(x + y);
+
+    return;
+}
+
+Fibonacci(1)
+console.log(`Fibonacci = ${arr2} <br>`);
+
+
+////////////////////////////
+
+
+
+
+
 
 
 
@@ -23,8 +49,7 @@ console.log(fibonacci1(10));
 // Q2
 let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-function sumArr(arrn) 
-{
+function sumArr(arrn) {
     if (arrn.length === 0) {
         return 0;
     }
@@ -34,7 +59,6 @@ function sumArr(arrn)
 }
 
 console.log(sumArr(arr1));
-
 
 
 
@@ -58,9 +82,12 @@ console.log(sum);
 
 
 
+
+
+
+
 //Q3 
-function rString(str)
- {
+function rString(str) {
     if (str === '') {
         return '';
     } else {
@@ -72,13 +99,32 @@ console.log(rString('Razan Aboushi'));
 
 
 
+//Q3 another answer
+
+
+let stri = "Razan";
+let news = "";
+let r = stri.length - 1
+function revers(str) {
+    if (r < 0) {
+        return 1
+    }
+    news += `${stri[r--]}`
+    revers(stri)
+    return news;
+}
+
+console.log(revers(stri));
+
+////////////////////////////////////////
+
+
 
 
 
 
 //Q4
-function pTriangle(size) 
-{
+function pTriangle(size) {
     if (size === 0) {
         return;
     } else {
