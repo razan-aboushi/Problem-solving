@@ -163,29 +163,18 @@
 
 //All of these operations take constant time complexity, regardless of the size of the stack, 
 //since we're only ever pushing or popping one element from each stack.
+
 let stack = [];
 let minStack = [];
 
-function push(value)  //pass the value as an argument to push() function
+function push(value1)  //pass the value as an argument to push() function
 {
-  stack.push(value); // push the value of value into stack
+  stack.push(value1); // push the value of value into stack
   
-  if (minStack.length === 0 || value <= minStack[minStack.length - 1])
+  if (minStack.length === 0 || value1 <= minStack[minStack.length - 1])
    {
-    minStack.push(value);
+    minStack.push(value1);
   }
-}
-
-function pop()
- {
-  let value = stack.pop();  //The pop method removes the top element from the stack and, if it's the current minimum, also removes it from minStack.
-  
-  if (value === minStack[minStack.length - 1])
-   {
-    minStack.pop();
-  }
-  
-  return value;
 }
 
 function getMin()  //The getMin method returns the top element of minStack
@@ -252,7 +241,7 @@ console.log(reverseQueue(queue1)); // The Output will be: [10,9,8,7,6,5,4,3,2,1]
 let s1 = [];
 let s2 = [];
 
-function enqueue(value)   // the enqueue method adds an element to s1.
+function enqueue(value)   // the enqueue function with value property.
  {
   s1.push(value);
 }
