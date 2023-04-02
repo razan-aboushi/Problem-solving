@@ -152,63 +152,55 @@
 
 
 
+
+
+
+
+
+
+
 // Q1 : Implement a function that returns the minimum element in a stack in constant time complexity.
 
 //All of these operations take constant time complexity, regardless of the size of the stack, 
 //since we're only ever pushing or popping one element from each stack.
+let stack = [];
+let minStack = [];
 
-// Create a class MinStack to contain the constructor
-class MinStack 
+function push(value)  //pass the value as an argument to push() function
 {
-  constructor() // constructor that have two parameters
-  {
-    this.stack = [];
-    this.minStack1 = [];
-  }
-
-
-  push(value1) //pass the value1 as an argument to push() method
+  stack.push(value); // push the value of value into stack
+  
+  if (minStack.length === 0 || value <= minStack[minStack.length - 1])
    {
-    this.stack.push(value1); // push the value of value1 into stack
-
-    if (this.minStack1.length === 0 || value1 <= this.minStack1[this.minStack1.length - 1]) 
-    {
-      this.minStack1.push(value1);
-    }
+    minStack.push(value);
   }
-
-
-  pop()
-   {
-
-    let value1 = this.stack.pop();
-
-    if (value1 === this.minStack1[this.minStack1.length - 1])
-     {
-      this.minStack1.pop(); //The pop method removes the top element from the stack and, if it's the current minimum, also removes it from minStack.
-    }
-
-    return value1;  console.log(value1);
-
-  }
-
-
-
-  getMin()        //The getMin method returns the top element of minStack
-   { 
-    return this.minStack1[this.minStack1.length - 1];  
-  }
-
 }
 
-let r1= new MinStack();
+function pop()
+ {
+  let value = stack.pop();  //The pop method removes the top element from the stack and, if it's the current minimum, also removes it from minStack.
+  
+  if (value === minStack[minStack.length - 1])
+   {
+    minStack.pop();
+  }
+  
+  return value;
+}
 
-r1.push(10);
-r1.push(20);
-r1.push(30);
-r1.push(40);
-r1.push(50);
-console.log(r1.getMin());
+function getMin()  //The getMin method returns the top element of minStack
+{
+  return minStack[minStack.length - 1];
+}
+
+push(10);
+push(20);
+push(30);
+push(40);
+push(50);
+console.log(getMin());
+
+
 
 
 
@@ -252,86 +244,71 @@ console.log(reverseQueue(queue1)); // The Output will be: [10,9,8,7,6,5,4,3,2,1]
 
 
 
+
+
 // Q3 : Implement a Queue using 2 stacks s1 and s2.
 
-class Queue
+
+let s1 = [];
+let s2 = [];
+
+function enqueue(value)   // the enqueue method adds an element to s1.
  {
-
-  constructor() 
-  {
-    this.s1 = [];
-    this.s2 = [];
-  }
-
-  enqueue(Rvalue)        // the enqueue method adds an element to s1. 
-   {
-    this.s1.push(Rvalue);    
-  }
-
-
-  dequeue()            // The dequeue method first checks if s2 is empty
-  {
-    if (this.s2.length === 0)    
-    {
-
-      while (this.s1.length > 0)
-       {
-        this.s2.push(this.s1.pop());  //it transfers elements from s1 to s2 until s1 is empty
-      }
-
-    }
-
-    if (this.s2.length === 0) 
-    {
-      return undefined; // Queue is empty
-    }
-    return this.s2.pop();   //Then it pops and returns the top element of s2
-  }
-
-
-  peek()
-   {
-    if (this.s2.length === 0) 
-    {
-      while (this.s1.length > 0)
-       {
-        this.s2.push(this.s1.pop());
-      }
-    }
-    if (this.s2.length === 0) 
-    {
-      return undefined; // Queue is empty
-    }
-
-    return this.s2[this.s2.length - 1];
-  }
-
-  isEmpty()    //The isEmpty method returns true if both stacks are empty
-   {
-    return this.s1.length === 0 && this.s2.length === 0;
-  }
-
-  size()  //The size method returns the total number of elements in the queue.
-   {
-    return this.s1.length + this.s2.length;
-  }
-
+  s1.push(value);
 }
 
+function dequeue() 
+{
+  if (s2.length === 0) 
+  {
+    while (s1.length > 0) 
+    {
+      s2.push(s1.pop());  //it transfers elements from s1 to s2 until s1 is empty
+    }
+  }
+  
+  if (s2.length === 0) {
+    return undefined; // Queue is empty
+  }
+  
+  return s2.pop(); //Then it pops and returns the top element of s2
+}
 
+function peek() 
+{
+  if (s2.length === 0)
+   {
+    while (s1.length > 0)
+     {
+      s2.push(s1.pop());
+    }
+  }
+  
+  if (s2.length === 0)
+   {
+    return undefined; // Queue is empty
+  }
+  
+  return s2[s2.length - 1];
+}
 
-const qr = new Queue();
-qr.enqueue(1);
-qr.enqueue(2);
-qr.enqueue(3);
-console.log(qr.peek()); // Output will be: 1
-console.log(qr.dequeue()); // Output will be: 1
-console.log(qr.dequeue()); // Output will be: 2
-console.log(qr.size()); // Output will be: 1
-console.log(qr.isEmpty()); // Output will be: false
-console.log(qr.dequeue()); // Output will be: 3
-console.log(qr.isEmpty()); // Output will be: true
+function isEmpty() //The isEmpty method returns true if both stacks are empty
+ {
+  return s1.length === 0 && s2.length === 0;
+}
 
+function size() //The size method returns the total number of elements in the queue.
+{
+  return s1.length + s2.length;
+}
 
-
-
+enqueue(1);
+enqueue(2);
+enqueue(3);
+console.log(peek()); // Output will be: 1
+console.log(dequeue()); // Output will be: 1
+console.log(dequeue()); // Output will be: 2
+console.log(size()); // Output will be: 1
+console.log(isEmpty()); // Output will be: false
+console.log(dequeue()); // Output will be: 3
+console.log(isEmpty()); // Output will be: true
