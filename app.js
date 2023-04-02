@@ -203,12 +203,12 @@ class MinStack
 
 let r1= new MinStack();
 
-r1.push(1);
-r1.push(2);
-r1.push(3);
-r1.push(4);
-r1.push(5);
-console.log(r1);
+r1.push(10);
+r1.push(20);
+r1.push(30);
+r1.push(40);
+r1.push(50);
+console.log(r1.getMin());
 
 
 
