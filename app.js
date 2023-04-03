@@ -166,7 +166,7 @@
 let stack = [];
 let minStack = [];
 
-function push(value)  //pass the value1 as an argument to push() method
+function push(value)  //pass the value as an argument to push() function
 {
   stack.push(value); // push the value of value into stack
   
@@ -274,7 +274,8 @@ function dequeue()
   return s2.pop(); //Then it pops and returns the top element of s2
 }
 
-function peek() {
+function peek() 
+{
   if (s2.length === 0)
    {
     while (s1.length > 0)
@@ -283,7 +284,8 @@ function peek() {
     }
   }
   
-  if (s2.length === 0) {
+  if (s2.length === 0)
+   {
     return undefined; // Queue is empty
   }
   
