@@ -163,7 +163,7 @@ class MinStack
   constructor() // constructor that have two parameters
   {
     this.stack = [];
-    this.minStack = [];
+    this.minStack1 = [];
   }
 
 
@@ -171,28 +171,44 @@ class MinStack
    {
     this.stack.push(value1); // push the value of value1 into stack
 
-    if (this.minStack.length === 0 || value1 <= this.minStack[this.minStack.length - 1]) {
-      this.minStack.push(value1);
+    if (this.minStack1.length === 0 || value1 <= this.minStack1[this.minStack1.length - 1]) 
+    {
+      this.minStack1.push(value1);
     }
   }
 
 
   pop()
    {
-    const value1 = this.stack.pop();
-    if (value1 === this.minStack[this.minStack.length - 1]) {
-      this.minStack.pop(); //The pop method removes the top element from the stack and, if it's the current minimum, also removes it from minStack.
+
+    let value1 = this.stack.pop();
+
+    if (value1 === this.minStack1[this.minStack1.length - 1])
+     {
+      this.minStack1.pop(); //The pop method removes the top element from the stack and, if it's the current minimum, also removes it from minStack.
     }
-    return value1;
+
+    return value1;  console.log(value1);
+
   }
+
 
 
   getMin()        //The getMin method returns the top element of minStack
    { 
-    return this.minStack[this.minStack.length - 1];  
+    return this.minStack1[this.minStack1.length - 1];  
   }
+
 }
 
+let r1= new MinStack();
+
+r1.push(1);
+r1.push(2);
+r1.push(3);
+r1.push(4);
+r1.push(5);
+console.log(r1);
 
 
 
@@ -315,7 +331,6 @@ console.log(qr.size()); // Output will be: 1
 console.log(qr.isEmpty()); // Output will be: false
 console.log(qr.dequeue()); // Output will be: 3
 console.log(qr.isEmpty()); // Output will be: true
-console.log(qr.dequeue()); // Output will be: undefined
 
 
 
