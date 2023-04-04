@@ -301,3 +301,153 @@ console.log(size()); // Output will be: 1
 console.log(isEmpty()); // Output will be: false
 console.log(dequeue()); // Output will be: 3
 console.log(isEmpty()); // Output will be: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////
+
+// Q4 : Create a function that takes a LinkedList and deletes the middle node in it and returns it
+
+class LinkedList 
+{
+  constructor() 
+  {
+    this.head = null;
+  }
+
+
+  Insert(value12) 
+  {
+    let Node1 = { value12, next: null };
+
+    if (!this.head)
+     {
+      this.head = Node1;
+    }
+
+
+     else
+      {
+      let currentNode = this.head;
+
+      while (currentNode.next) 
+      {
+        currentNode = currentNode.next;
+      }
+
+      currentNode.next = Node1;
+    }
+
+  }
+
+
+
+  deleteMiddleNode()
+   {
+    let nextPointer1 = this.head;
+    let nextPointer2 = this.head;
+    let previousNode = null;
+
+    while (nextPointer2 && nextPointer2.next)
+     {
+      previousNode = nextPointer1;
+      nextPointer1 = nextPointer1.next;
+      nextPointer2 = nextPointer2.next.next;
+    }
+
+    if (previousNode)
+     {
+      previousNode.next = nextPointer1.next;
+    } 
+    else
+     {
+      this.head = nextPointer1.next;
+    }
+
+
+    return this;
+  }
+
+
+
+
+  reversFunc() 
+  {
+    let previousNode = null;
+    let currentNode = this.head;
+
+    while (currentNode)
+     {
+      let nextNode = currentNode.next;
+      currentNode.next = previousNode;
+      previousNode = currentNode;
+      currentNode = nextNode;
+    }
+
+    this.head = previousNode;
+    return this; // return previousNode
+  }
+
+  }
+
+
+
+
+
+
+
+
+
+let LinkedList1 = new LinkedList();
+
+LinkedList1.Insert(1);
+LinkedList1.Insert(2);
+LinkedList1.Insert(3);
+LinkedList1.Insert(4);
+LinkedList1.Insert(5);
+LinkedList1.Insert(6);
+LinkedList1.Insert(7);
+
+console.log(LinkedList1.deleteMiddleNode()); 
+
+
+
+
+
+
+
+//  Q5 : Create a function that takes a LinkedList and reverses it
+
+
+
+let LinkedList2=new LinkedList();
+
+LinkedList2.Insert(10);
+LinkedList2.Insert(20);
+LinkedList2.Insert(30);
+LinkedList2.Insert(40);
+LinkedList2.Insert(50);
+LinkedList2.Insert(60);
+LinkedList2.Insert(70);
+
+console.log(LinkedList2.reversFunc());
+
+
+
+
+
+
+
+
